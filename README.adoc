@@ -1,0 +1,145 @@
+= SplitNGo - Core API
+:toc:
+:toc-title: Table of Contents
+:icons: font
+
+This module is the _Core API_ of the SplitNGo application, a travel management app for friends.
+It provides the business logic and database access.
+Developed in Java 21 with Spring Boot 3.4.3.
+
+== 📡 REST API Overview
+
+This module exposes a REST API that provides all business features for the SplitNGo application.
+
+It supports:
+
+- User management (authentication, registration)
+- Trip creation and collaboration
+- Expense tracking and budget balance
+- Activity and housing management
+- Media uploads and gallery access
+
+=== 🔗 Example endpoints
+
+[source,http]
+----
+GET    /api/trips
+POST   /api/expenses
+GET    /api/activities/{id}
+POST   /api/users/register
+----
+
+=== 📘 API Documentation (Swagger)
+
+Access it at:
+
+[source]
+----
+http://localhost:8081/swagger-ui.html
+----
+
+== ⚙️ Technologies
+
+- Java 21
+- Spring Boot 3.4.3
+- Maven Wrapper (`mvnw`)
+- Docker & Docker Compose
+- MySQL 8
+- Spring Data JPA
+- Spring Devtools
+
+== 🚀 Launch the project
+
+=== 🛠️ Development Mode (default)
+
+The development mode uses `spring-boot-devtools` for hot reload.
+
+[source,bash]
+----
+make dev
+----
+
+or directly:
+
+[source,bash]
+----
+docker compose up
+----
+
+=== 🚢 Production Mode
+
+Builds and runs the JAR inside a container.
+
+[source,bash]
+----
+make prod
+----
+
+or:
+
+[source,bash]
+----
+BUILD_MODE=prod docker compose up
+----
+
+== 🧪 Manual Compilation
+
+=== Build the application (without tests)
+
+[source,bash]
+----
+make build
+----
+
+=== Clean the project
+
+[source,bash]
+----
+make clean
+----
+
+== ⏹️ Stop the application
+
+To stop and remove running containers:
+
+[source,bash]
+----
+make down
+----
+
+
+== ⚙️ Spring Boot Configuration
+
+The `application-dev.yml` file contains database settings for development.
+
+Environment variables are injected via `.env`.
+
+[source,yaml]
+----
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+----
+
+== 📦 Environment Variables
+
+Defined in a `.env` file (not versioned).
+You can use `.env.example` as a template.
+
+[source,env]
+----
+MYSQL_ROOT_PASSWORD=ChangeMe
+MYSQL_DATABASE=ChangeMe
+MYSQL_USER=ChangeMe
+MYSQL_PASSWORD=ChangeMe
+
+SPRING_DATASOURCE_URL=ChangeMe
+SPRING_DATASOURCE_USERNAME=ChangeMe
+SPRING_DATASOURCE_PASSWORD=ChangeMe
+----
+
+== 👥 Authors
+
+This project is developed as part of the CDA (Application Developer Designer) training by the SplitNGo team.
