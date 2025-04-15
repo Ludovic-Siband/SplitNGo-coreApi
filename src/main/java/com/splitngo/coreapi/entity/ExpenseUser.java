@@ -3,6 +3,8 @@ package com.splitngo.coreapi.entity;
 import com.splitngo.coreapi.entity.compositeId.ExpenseUserID;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -12,19 +14,29 @@ import java.time.LocalDateTime;
 public class ExpenseUser {
 
     @EmbeddedId
-    private ExpenseUserID id;
+    private ExpenseUserID id = new ExpenseUserID();
 
-    @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("expenseId")
     @JoinColumn(name = "id_expense", nullable = false)
     private Expense expense;
 
-    @Column(name = "is_paid")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("userId")
+    @JoinColumn(name = "id_user", nullable = false)
+    private User user;
+
+    @Column(name = "amount", nullable = false)
+    private int amount;
+
+    @Column(name = "is_paid", nullable = false)
     private boolean isPaid;
 
+    @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 }

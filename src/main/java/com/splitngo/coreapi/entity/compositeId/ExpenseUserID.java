@@ -11,9 +11,9 @@ import java.io.Serializable;
 public class ExpenseUserID implements Serializable {
 
     @Column(name = "id_expense")
-    private Long expenseId;
+    private Integer expenseId;
 
     @Column(name = "id_user")
-    private Long userId;
+    private Integer userId;
 
 }
