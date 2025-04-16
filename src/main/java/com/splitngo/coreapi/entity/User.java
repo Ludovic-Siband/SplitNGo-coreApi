@@ -2,6 +2,7 @@ package com.splitngo.coreapi.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,21 +14,23 @@ import java.util.List;
 @Data
 public class User {
 
+    // Initial attributes
+
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Integer id;
 
-    @Column(name = "lastname", nullable = false)
+    @Column(name = "lastname", nullable = false, length = 255)
     private String lastName;
 
-    @Column(name = "firstname", nullable = false)
+    @Column(name = "firstname", nullable = false, length = 255)
     private String firstName;
 
-    @Column(name = "mail", nullable = false, unique = true)
+    @Column(name = "mail", nullable = false, unique = true, length = 255)
     private String mail;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
 
     @CreationTimestamp
@@ -41,11 +44,11 @@ public class User {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    @Column(name = "is_deleted", nullable = false)
+    @Column(name = "is_deleted", nullable = false, columnDefinition = "BOOLEAN")
     private boolean isDeleted;
 
     // Other fields and relationships
-
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
             name = "user_trip",
@@ -54,6 +57,7 @@ public class User {
     )
     private List<Trip> trips;
 
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
             name = "user_activity",
@@ -62,6 +66,7 @@ public class User {
     )
     private List<Activity> activities;
 
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
             name = "user_housing",
@@ -70,9 +75,11 @@ public class User {
     )
     private List<Housing> housings;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private List<ExpenseUser> expenseLinkToUser;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "creator")
     private List<Trip> createdTrips;
 

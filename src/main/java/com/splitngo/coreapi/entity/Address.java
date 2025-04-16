@@ -11,17 +11,17 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_address")
-    private  Integer id;
+    private Integer id;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address", nullable = false, length = 255)
     private String address;
 
-    @Column(name = "zip_code", nullable = false)
+    @Column(name = "zip_code", nullable = false, length = 20)
     private String zipCode;
 
-    @Column(name = "city", nullable = false)
+    @Column(name = "city", nullable = false, length = 100)
     private String city;
 
-    @Column(name = "country", nullable = false)
+    @Column(name = "country", nullable = false, length = 100)
     private String country;
 }

@@ -1,7 +1,7 @@
 package com.splitngo.coreapi.services;
 
 import com.splitngo.coreapi.dtos.TripDTO;
-import com.splitngo.coreapi.dtos.TripDTODetail;
+import com.splitngo.coreapi.dtos.TripDetailDTO;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,8 +28,8 @@ public class TripService {
     }
 
 
-    public TripDTODetail getTripByID(@PathVariable int id) {
-        TripDTODetail trip1 = new TripDTODetail();
+    public TripDetailDTO getTripByID(@PathVariable int id) {
+        TripDetailDTO trip1 = new TripDetailDTO();
         trip1.setId(1);
         trip1.setTitle("Trip to Paris");
         trip1.setDescription("A wonderful trip to Paris with friends.");

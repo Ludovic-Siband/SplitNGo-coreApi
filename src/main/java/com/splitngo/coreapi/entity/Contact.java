@@ -11,17 +11,17 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_contact")
-    private  Integer id;
+    private Integer id;
 
-    @Column(name = "lastname", nullable = false)
+    @Column(name = "lastname", nullable = false, length = 255)
     private String lastname;
 
-    @Column(name = "firstname", nullable = false)
+    @Column(name = "firstname", nullable = false, length = 255)
     private String firstname;
 
-    @Column(name = "mail", nullable = false)
+    @Column(name = "mail", nullable = false, length = 255)
     private String mail;
 
-    @Column(name = "phone", nullable = false)
+    @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 }

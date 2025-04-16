@@ -3,6 +3,7 @@ package com.splitngo.coreapi.entity;
 import com.splitngo.coreapi.entity.compositeId.ExpenseUserID;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,11 +17,13 @@ public class ExpenseUser {
     @EmbeddedId
     private ExpenseUserID id = new ExpenseUserID();
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("expenseId")
     @JoinColumn(name = "id_expense", nullable = false)
     private Expense expense;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("userId")
     @JoinColumn(name = "id_user", nullable = false)
@@ -29,7 +32,7 @@ public class ExpenseUser {
     @Column(name = "amount", nullable = false)
     private int amount;
 
-    @Column(name = "is_paid", nullable = false)
+    @Column(name = "is_paid", nullable = false, columnDefinition = "BOOLEAN")
     private boolean isPaid;
 
     @UpdateTimestamp

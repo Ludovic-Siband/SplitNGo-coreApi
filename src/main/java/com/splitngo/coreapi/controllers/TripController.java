@@ -1,7 +1,7 @@
 package com.splitngo.coreapi.controllers;
 
 import com.splitngo.coreapi.dtos.TripDTO;
-import com.splitngo.coreapi.dtos.TripDTODetail;
+import com.splitngo.coreapi.dtos.TripDetailDTO;
 import com.splitngo.coreapi.services.TripService;
 import lombok.Data;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public class TripController {
     }
 
     @GetMapping("/{id}")
-    public TripDTODetail getTripById(@PathVariable int id) {
+    public TripDetailDTO getTripById(@PathVariable int id) {
         return tripService.getTripByID(id);
     }
 
