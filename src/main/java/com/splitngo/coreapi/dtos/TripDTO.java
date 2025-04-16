@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class TripDTO {
 
-    private int id;
+    private Integer id;
     private String title;
     private String description;
     private LocalDateTime dateStart;
