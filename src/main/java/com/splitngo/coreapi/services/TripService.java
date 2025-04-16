@@ -15,7 +15,7 @@ public class TripService {
 
     public List<TripDTO> getAllTrips() {
         TripDTO trip1 = new TripDTO();
-        trip1.setId(1L);
+        trip1.setId(150);
         trip1.setTitle("Trip to Paris");
         trip1.setDescription("A wonderful trip to Paris with friends.");
         trip1.setDateStart(LocalDateTime.of(2023, 10, 1, 10, 0));
