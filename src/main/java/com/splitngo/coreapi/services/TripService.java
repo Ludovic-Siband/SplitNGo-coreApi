@@ -28,7 +28,7 @@ public class TripService {
     }
 
 
-    public TripDetailDTO getTripByID(@PathVariable int id) {
+    public TripDetailDTO getTripById(@PathVariable int id) {
         TripDetailDTO trip1 = new TripDetailDTO();
         trip1.setId(1);
         trip1.setTitle("Trip to Paris");

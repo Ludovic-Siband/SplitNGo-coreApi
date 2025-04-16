@@ -14,14 +14,14 @@ public class Contact {
     private Integer id;
 
     @Column(name = "lastname", nullable = false, length = 255)
-    private String lastname;
+    private String lastName;
 
     @Column(name = "firstname", nullable = false, length = 255)
-    private String firstname;
+    private String firstName;
 
     @Column(name = "mail", nullable = false, length = 255)
     private String mail;
 
     @Column(name = "phone", nullable = false, length = 20)
-    private String phone;
+    private String phoneNumber;
 }

@@ -25,7 +25,7 @@ public class TripController {
 
     @GetMapping("/{id}")
     public TripDetailDTO getTripById(@PathVariable int id) {
-        return tripService.getTripByID(id);
+        return tripService.getTripById(id);
     }
 
 }
