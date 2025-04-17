@@ -3,8 +3,11 @@ services:
     build:
       context: .
       target: ${BUILD_MODE:-dev}
+    container_name: trip-api
     ports:
       - "8081:8081"
+    networks:
+      - splitngo-net
     volumes:
       - .:/app
       - ~/.m2:/root/.m2
@@ -38,3 +41,7 @@ services:
 
 volumes:
   db-data:
+
+networks:
+  splitngo-net:
+    external: true

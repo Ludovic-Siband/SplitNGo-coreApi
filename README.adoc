@@ -50,6 +50,20 @@ http://localhost:8081/swagger-ui.html
 
 == 🚀 Launch the project
 
+=== 🔗 Connecting `bff` and `trip-api` via Shared Docker Network
+
+To allow the `bff` service to communicate with the `trip-api` service across different repositories, we use a **shared external Docker network**.
+
+This ensures proper service-to-service communication across containers, even when launched separately.
+
+📦 1. Create the Shared Network
+
+You only need to do this once on your machine:
+
+```bash
+docker network create splitngo-net
+```
+
 === 🛠️ Development Mode (default)
 
 The development mode uses `spring-boot-devtools` for hot reload.
