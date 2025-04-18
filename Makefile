@@ -2,7 +2,7 @@
 
 # Start in development mode (hot reload)
 dev:
-	BUILD_MODE=dev docker-compose up --build -d
+	BUILD_MODE=dev docker-compose up --build
 
 # Start in production mode (compiled JAR)
 prod:
