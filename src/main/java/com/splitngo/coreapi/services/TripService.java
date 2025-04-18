@@ -2,44 +2,41 @@ package com.splitngo.coreapi.services;
 
 import com.splitngo.coreapi.dtos.TripDTO;
 import com.splitngo.coreapi.dtos.TripDetailDTO;
-import lombok.Data;
+import com.splitngo.coreapi.entity.Trip;
+import com.splitngo.coreapi.mappers.TripMapper;
+import com.splitngo.coreapi.repositories.TripRepository;
+import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@Data
+@RequiredArgsConstructor
 public class TripService {
 
+    private final TripRepository tripRepository;
+    private final TripMapper tripMapper;
+
+    /**
+     * Retrieves all trips from the database and maps them to DTOs.
+     *
+     * @return a list of {@link TripDTO} objects representing all trips.
+     */
     public List<TripDTO> getAllTrips() {
-        TripDTO trip1 = new TripDTO();
-        trip1.setId(150);
-        trip1.setTitle("Trip to Paris");
-        trip1.setDescription("A wonderful trip to Paris with friends.");
-        trip1.setDateStart(LocalDateTime.of(2023, 10, 1, 10, 0));
-        trip1.setDateEnd(LocalDateTime.of(2023, 10, 10, 18, 0));
-        trip1.setCreatedAt(LocalDateTime.now());
-        trip1.setActive(true);
-        trip1.setCreatedBy("Polo");
-
-        return List.of(trip1);
+        return tripMapper.toDTO(tripRepository.findAll());
     }
 
-
-    public TripDetailDTO getTripById(@PathVariable int id) {
-        TripDetailDTO trip1 = new TripDetailDTO();
-        trip1.setId(1);
-        trip1.setTitle("Trip to Paris");
-        trip1.setDescription("A wonderful trip to Paris with friends.");
-        trip1.setDateStart(LocalDateTime.of(2023, 10, 1, 10, 0));
-        trip1.setDateEnd(LocalDateTime.of(2023, 10, 10, 18, 0));
-        trip1.setCreatedAt(LocalDateTime.now());
-        trip1.setActive(true);
-        trip1.setCreatedBy("Polo");
-
-        return trip1;
+    /**
+     * Retrieves the details of a trip by its unique identifier.
+     *
+     * @param id the unique identifier of the trip to retrieve.
+     * @return a {@link TripDetailDTO} representing the detailed information of the trip.
+     * @throws EntityNotFoundException if no trip with the specified ID is found.
+     */
+    public TripDetailDTO getTripById(Integer id) {
+        Trip trip = tripRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Trip with ID " + id + " not found"));
+        return tripMapper.toDetailDTO(trip);
     }
-
 }

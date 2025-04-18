@@ -19,7 +19,7 @@ public class Housing {
     @Column(name = "id_housing")
     private Integer id;
 
-    @Column(name = "type", nullable = false, length = 99)
+    @Column(name = "type", nullable = false, length = 100)
     private String type;
 
     @Column(name = "title", nullable = false, length = 255)

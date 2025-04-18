@@ -38,7 +38,7 @@ public class Trip {
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
+    @JoinColumn(name = "created_by", referencedColumnName = "id_user", nullable = false)
     private User createdBy;
 
     @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN")

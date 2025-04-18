@@ -3,7 +3,7 @@ package com.splitngo.coreapi.controllers;
 import com.splitngo.coreapi.dtos.TripDTO;
 import com.splitngo.coreapi.dtos.TripDetailDTO;
 import com.splitngo.coreapi.services.TripService;
-import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/trips")
-@Data
+@RequiredArgsConstructor
 public class TripController {
 
     private final TripService tripService;
@@ -24,7 +24,7 @@ public class TripController {
     }
 
     @GetMapping("/{id}")
-    public TripDetailDTO getTripById(@PathVariable int id) {
+    public TripDetailDTO getTripById(@PathVariable Integer id) {
         return tripService.getTripById(id);
     }
 

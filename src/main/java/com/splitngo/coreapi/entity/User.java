@@ -80,8 +80,10 @@ public class User {
     private List<ExpenseUser> expenseLinkToUser;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "creator")
+    @OneToMany(mappedBy = "createdBy")
     private List<Trip> createdTrips;
 
-
+    @ToString.Exclude
+    @OneToMany(mappedBy = "createdBy")
+    private List<Expense> createdExpenses;
 }
